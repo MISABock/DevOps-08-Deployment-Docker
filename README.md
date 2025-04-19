@@ -7,5 +7,6 @@ Als erstes habe ich den Shell-Befehle für Sonar Analyse ins CMD eingeben damit 
 Das gleiche fürs Frontend: (![SonarFrontendCMD](images/SonarFrontendCMD.png)) (![SonarFrontendLLocalhost](images/SonarFrontendLLocalhost.png))
 
 
-Als nächstes habe ich auf Jenkins eine Pipeline angelegt: (![JenkinsPipeline](images/JenkinsPipeline.png))
+Als nächstes habe ich auf Jenkins eine Pipeline angelegt: (![JenkinsPipeline](images/JenkinsPipeline.png)) (![JenkinsPipileConf](images/JenkinsPipileConf.png))
 
+Mit einem Build dann geprüft ob alles funktioniert soweit: (![PipelineBuildCheck](images/PipelineBuildCheck.png))
