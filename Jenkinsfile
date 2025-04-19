@@ -74,7 +74,9 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
-                echo "Building Docker image..."
+                echo "Building Docker image via TCP..."
+                export DOCKER_HOST=tcp://host.docker.internal:2375
+                docker version
                 docker build -t mosazhaw/devopsdemo .
                 '''
             }
