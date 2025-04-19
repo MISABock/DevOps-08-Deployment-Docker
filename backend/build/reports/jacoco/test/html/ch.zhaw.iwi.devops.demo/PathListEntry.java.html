@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PathListEntry.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">ch.zhaw.iwi.devops.demo</a> &gt; <span class="el_source">PathListEntry.java</span></div><h1>PathListEntry.java</h1><pre class="source lang-java linenums">package ch.zhaw.iwi.devops.demo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class PathListEntry&lt;KEYTYPE&gt; {
+
+	private Key key;
+	private String name;
+	private String color;
+	private String icon;
+	private String url;
+	private String page;
+	private String type;
+	private boolean active;
+	private String tooltip;
+<span class="fc" id="L17">	private List&lt;String&gt; details = new ArrayList&lt;&gt;();</span>
+	private float order;
+	private Form form;
+
+<span class="fc" id="L21">	public PathListEntry() {</span>
+<span class="fc" id="L22">		this.active = true;</span>
+<span class="fc" id="L23">	}</span>
+
+	public Key getKey() {
+<span class="fc" id="L26">		return key;</span>
+	}
+
+	public void setKey(KEYTYPE key, String name) {
+<span class="fc" id="L30">		this.key = new Key(key, name);</span>
+<span class="fc" id="L31">	}</span>
+
+	public String getName() {
+<span class="fc" id="L34">		return name;</span>
+	}
+
+	public void setName(String name) {
+<span class="fc" id="L38">		this.name = name;</span>
+<span class="fc" id="L39">	}</span>
+
+	public void setColor(String color) {
+<span class="fc" id="L42">		this.color = color;</span>
+<span class="fc" id="L43">	}</span>
+
+	public String getColor() {
+<span class="fc" id="L46">		return color;</span>
+	}
+
+	public String getIcon() {
+<span class="fc" id="L50">		return icon;</span>
+	}
+
+	public void setIcon(String icon) {
+<span class="fc" id="L54">		this.icon = icon;</span>
+<span class="fc" id="L55">	}</span>
+
+	public List&lt;String&gt; getDetails() {
+<span class="fc" id="L58">		return details;</span>
+	}
+
+	public void setDetails(List&lt;String&gt; details) {
+<span class="fc" id="L62">		this.details = details;</span>
+<span class="fc" id="L63">	}</span>
+
+	public String getUrl() {
+<span class="fc" id="L66">		return url;</span>
+	}
+
+	public void setUrl(String url) {
+<span class="fc" id="L70">		this.url = url;</span>
+<span class="fc" id="L71">	}</span>
+
+	public boolean isActive() {
+<span class="fc" id="L74">		return active;</span>
+	}
+
+	public void setActive(boolean active) {
+<span class="fc" id="L78">		this.active = active;</span>
+<span class="fc" id="L79">	}</span>
+
+	public void setOrder(float order) {
+<span class="fc" id="L82">		this.order = order;</span>
+<span class="fc" id="L83">	}</span>
+
+	public float getOrder() {
+<span class="fc" id="L86">		return order;</span>
+	}
+
+	public String getType() {
+<span class="fc" id="L90">		return type;</span>
+	}
+
+	public void setType(String type) {
+<span class="fc" id="L94">		this.type = type;</span>
+<span class="fc" id="L95">	}</span>
+
+	public String getPage() {
+<span class="fc" id="L98">		return page;</span>
+	}
+
+	public void setPage(String page) {
+<span class="fc" id="L102">		this.page = page;</span>
+<span class="fc" id="L103">	}</span>
+
+	public String getTooltip() {
+<span class="fc" id="L106">		return tooltip;</span>
+	}
+
+	public void setTooltip(String tooltip) {
+<span class="fc" id="L110">		this.tooltip = tooltip;</span>
+<span class="fc" id="L111">	}</span>
+	
+	public String getForm() {
+<span class="fc bfc" id="L114" title="All 2 branches covered.">		if (form == null) {</span>
+<span class="fc" id="L115">			return null;</span>
+		}
+<span class="fc" id="L117">		return form.form;</span>
+	}
+	
+	public void setForm(String form) {
+<span class="fc bfc" id="L121" title="All 2 branches covered.">		if (form == null) {</span>
+<span class="fc" id="L122">			this.form = null;</span>
+		} else {
+<span class="fc" id="L124">			this.form = new Form();</span>
+<span class="fc" id="L125">			this.form.form = form;</span>
+		}
+<span class="fc" id="L127">	}</span>
+
+	public class Key {
+
+		public Key(KEYTYPE key, String name) {
+<span class="fc" id="L132">			super();</span>
+<span class="fc" id="L133">			this.key = key;</span>
+<span class="fc" id="L134">			this.name = name;</span>
+<span class="fc" id="L135">		}</span>
+
+		private KEYTYPE key;
+		private String name;
+
+		public KEYTYPE getKey() {
+<span class="fc" id="L141">			return key;</span>
+		}
+
+		public String getName() {
+<span class="fc" id="L145">			return name;</span>
+		}
+
+		@Override
+		public int hashCode() {
+<span class="fc" id="L150">			final int prime = 31;</span>
+<span class="fc" id="L151">			int result = 1;</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">			result = prime * result + ((key == null) ? 0 : key.hashCode());</span>
+<span class="fc bfc" id="L153" title="All 2 branches covered.">			result = prime * result + ((name == null) ? 0 : name.hashCode());</span>
+<span class="fc" id="L154">			return result;</span>
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+<span class="pc bpc" id="L159" title="1 of 2 branches missed.">			if (this == obj)</span>
+<span class="nc" id="L160">				return true;</span>
+<span class="pc bpc" id="L161" title="1 of 2 branches missed.">			if (obj == null)</span>
+<span class="nc" id="L162">				return false;</span>
+<span class="pc bpc" id="L163" title="1 of 2 branches missed.">			if (getClass() != obj.getClass())</span>
+<span class="nc" id="L164">				return false;</span>
+			@SuppressWarnings(&quot;unchecked&quot;)
+<span class="fc" id="L166">			Key other = (Key) obj;</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">			if (key == null) {</span>
+<span class="fc bfc" id="L168" title="All 2 branches covered.">				if (other.key != null)</span>
+<span class="fc" id="L169">					return false;</span>
+<span class="fc bfc" id="L170" title="All 2 branches covered.">			} else if (!key.equals(other.key))</span>
+<span class="fc" id="L171">				return false;</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">			if (name == null) {</span>
+<span class="pc bpc" id="L173" title="1 of 2 branches missed.">				if (other.name != null)</span>
+<span class="nc" id="L174">					return false;</span>
+<span class="pc bpc" id="L175" title="1 of 2 branches missed.">			} else if (!name.equals(other.name))</span>
+<span class="nc" id="L176">				return false;</span>
+<span class="fc" id="L177">			return true;</span>
+		}
+
+	}
+	
+<span class="fc" id="L182">	private class Form {</span>
+		private String form;
+	}
+
+	@Override
+	public int hashCode() {
+<span class="fc" id="L188">		final int prime = 31;</span>
+<span class="fc" id="L189">		int result = 1;</span>
+<span class="pc bpc" id="L190" title="1 of 2 branches missed.">		result = prime * result + ((key == null) ? 0 : key.hashCode());</span>
+<span class="fc" id="L191">		return result;</span>
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+<span class="pc bpc" id="L196" title="1 of 2 branches missed.">		if (this == obj)</span>
+<span class="nc" id="L197">			return true;</span>
+<span class="pc bpc" id="L198" title="1 of 2 branches missed.">		if (obj == null)</span>
+<span class="nc" id="L199">			return false;</span>
+<span class="pc bpc" id="L200" title="1 of 2 branches missed.">		if (getClass() != obj.getClass())</span>
+<span class="nc" id="L201">			return false;</span>
+<span class="fc" id="L202">		PathListEntry&lt;?&gt; other = (PathListEntry&lt;?&gt;) obj;</span>
+<span class="pc bpc" id="L203" title="1 of 2 branches missed.">		if (key == null) {</span>
+<span class="nc bnc" id="L204" title="All 2 branches missed.">			if (other.key != null)</span>
+<span class="nc" id="L205">				return false;</span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">		} else if (!key.equals(other.key))</span>
+<span class="fc" id="L207">			return false;</span>
+<span class="fc" id="L208">		return true;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

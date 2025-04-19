@@ -1,0 +1,6 @@
+projectKey=DevOpsDemo-Backend
+serverUrl=http://localhost:9000
+serverVersion=25.4.0.105899
+dashboardUrl=http://localhost:9000/dashboard?id=DevOpsDemo-Backend
+ceTaskId=875f19a2-21c6-47d4-9f26-818dccd208a5
+ceTaskUrl=http://localhost:9000/api/ce/task?id=875f19a2-21c6-47d4-9f26-818dccd208a5
