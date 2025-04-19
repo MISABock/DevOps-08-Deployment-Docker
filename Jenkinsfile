@@ -47,7 +47,7 @@ pipeline {
                         ./gradlew sonar \
                           -Dsonar.projectKey=DevOpsDemo-Backend \
                           -Dsonar.projectName="DevOpsDemo-Backend" \
-                          -Dsonar.host.url=http://localhost:9000 \
+                          -Dsonar.host.url=http://host.docker.internal:9000 \
                           -Dsonar.token=${TOKEN}
                         '''
                     }
@@ -63,7 +63,7 @@ pipeline {
                         npx sonar-scanner \
                           -Dsonar.projectKey=DevOpsDemo-Frontend \
                           -Dsonar.projectName="DevOpsDemo-Frontend" \
-                          -Dsonar.host.url=http://localhost:9000 \
+                          -Dsonar.host.url=http://host.docker.internal:9000 \
                           -Dsonar.token=${TOKEN}
                         '''
                     }
