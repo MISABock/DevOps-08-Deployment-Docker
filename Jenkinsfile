@@ -1,17 +1,34 @@
 pipeline {
-    agent any
-
-    tools {
-        nodejs 'NodeJS 23.11.0'
-        jdk 'jdk17'
-        dockerTool 'docker'
+    agent {
+        docker {
+            image 'node:20-bullseye' // enthält Node.js, ist leichtgewichtig
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
     }
 
     environment {
-        DOCKER_HOST = "tcp://host.docker.internal:2375"
+        DOCKER_HOST = "unix:///var/run/docker.sock"
     }
 
     stages {
+        stage('Install Tools') {
+            steps {
+                sh '''
+                    apt-get update && apt-get install -y \
+                        git \
+                        docker.io \
+                        openjdk-17-jdk \
+                        curl \
+                        unzip
+                        
+                    echo "✔ Tools installiert:"
+                    git --version
+                    java -version
+                    docker --version
+                '''
+            }
+        }
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -20,8 +37,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'echo "Starting build..."'
-
+                sh 'echo "🚧 Starting backend build & tests..."'
                 dir('backend') {
                     sh 'chmod +x ./gradlew'
                     sh './gradlew test'
@@ -76,9 +92,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
-                echo "Building Docker image via TCP..."
-                export DOCKER_HOST=tcp://host.docker.internal:2375
-                docker version
+                echo "🐳 Building Docker image..."
                 docker build -t mosazhaw/devopsdemo .
                 '''
             }
