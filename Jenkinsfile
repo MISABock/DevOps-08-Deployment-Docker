@@ -8,7 +8,6 @@ pipeline {
 
     environment {
         DOCKER_HOST = "unix:///var/run/docker.sock"
-        DOCKER_HOST = "unix:///var/run/docker.sock"
     }
 
     stages {
