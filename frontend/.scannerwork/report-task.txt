@@ -1,6 +1,0 @@
-projectKey=DevOpsDemo-Frontend
-serverUrl=http://localhost:9000
-serverVersion=25.4.0.105899
-dashboardUrl=http://localhost:9000/dashboard?id=DevOpsDemo-Frontend
-ceTaskId=90dc0686-fffa-4fb0-9fe0-f1758aabcdf9
-ceTaskUrl=http://localhost:9000/api/ce/task?id=90dc0686-fffa-4fb0-9fe0-f1758aabcdf9
