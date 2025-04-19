@@ -9,4 +9,4 @@ Das gleiche fürs Frontend: (![SonarFrontendCMD](images/SonarFrontendCMD.png)) (
 
 Als nächstes habe ich auf Jenkins eine Pipeline angelegt: (![JenkinsPipeline](images/JenkinsPipeline.png)) (![JenkinsPipileConf](images/JenkinsPipileConf.png))
 
-Mit einem Build dann geprüft ob alles funktioniert soweit: (![PipelineBuildCheck](images/PipelineBuildCheck.png))
+Mit einem Build dann geprüft ob alles funktioniert soweit: (![PipelineBuildCheck](images/PipelineBuildCheck.png))#
