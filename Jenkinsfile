@@ -1,14 +1,13 @@
 pipeline {
-    agent any
-
-    tools {
-        nodejs 'NodeJS 23.11.0'
-        jdk 'jdk17'
-        dockerTool 'docker'
+    agent {
+        docker {
+            image 'mosazhaw/jenkins-agent-full'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
     }
 
     environment {
-        DOCKER_HOST = "tcp://host.docker.internal:2375"
+        DOCKER_HOST = "unix:///var/run/docker.sock"
     }
 
     stages {
@@ -76,9 +75,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
-                echo "Building Docker image via TCP..."
-                export DOCKER_HOST=tcp://host.docker.internal:2375
-                docker version
+                echo "Building Docker image..."
                 docker build -t mosazhaw/devopsdemo .
                 '''
             }
