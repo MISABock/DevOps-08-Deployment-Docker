@@ -1,10 +1,13 @@
 pipeline {
     agent {
-        dockerContainer  {
+        dockerContainer {
             image 'mosazhaw/jenkins-agent-full'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
+            dockerHost 'tcp://host.docker.internal:2375'
+            // falls du Credentials brauchst:
+            // credentialsId 'dein-cred-id'
         }
     }
+
 
     environment {
         DOCKER_HOST = "unix:///var/run/docker.sock"
