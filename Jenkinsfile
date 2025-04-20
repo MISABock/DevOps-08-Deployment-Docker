@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker {
+        dockerContainer  {
             image 'mosazhaw/jenkins-agent-full'
             args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
