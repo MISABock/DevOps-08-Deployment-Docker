@@ -34,14 +34,18 @@ pipeline {
             }
         }
 
-        stage('Frontend Lint') {
-            steps {
-                dir('frontend') {
-                    sh 'npm install'
-                    sh 'npm run lint:html'
-                }
-            }
+stage('Frontend Lint') {
+    steps {
+        dir('frontend') {
+            sh '''
+                apt-get update
+                apt-get install -y nodejs npm
+                npm install
+                npm run lint:html
+            '''
         }
+    }
+}
 
         stage('SonarQube Backend') {
             steps {

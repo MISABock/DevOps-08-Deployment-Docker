@@ -13,4 +13,6 @@ Mit einem Build dann geprüft ob alles funktioniert soweit: (![PipelineBuildChec
 
 Als nächstes habe ich eine neue Cloud erstellt: (![JenkisnCloud](images/JenkisnCloud.png)) (![JenkinsCloudConfig](images/JenkinsCloudConfig.png))
 
-Auf folgenden Logs sieht man, dass die Applikation auf der Jenkins Cloud läuft: (![RunningOnJenkinsCloud](images/RunningOnJenkinsCloud.png) (![PipelineOnDockerAgent](images/PipelineOnDockerAgent.png)
+Auf folgenden Logs sieht man, dass die Applikation auf der Jenkins Cloud läuft: (![RunningOnJenkinsCloud](images/RunningOnJenkinsCloud.png) 
+
+Auch hier bei der Pipelien sieht man, dass Jenkins erfolgreich ein Docker Agent mit dem Image jenkins/agent:jdk21 gestartet und verbunden hat. Gleichzeitig sieht man, dass die Verbindung zum meinem Repo funktioniert.  (![jenkinsLogsImageSuccess](images/jenkinsLogsImageSuccess.png))
