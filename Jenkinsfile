@@ -90,4 +90,4 @@ stage('Frontend Lint') {
             }
         }
     }
-}
+
