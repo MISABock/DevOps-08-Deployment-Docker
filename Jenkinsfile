@@ -20,12 +20,10 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo "Starting build..."'
-
                 dir('backend') {
                     sh 'chmod +x ./gradlew'
                     sh './gradlew test'
                 }
-
                 jacoco()
                 junit testResults: '**/test-results/test/*.xml'
             }
@@ -35,8 +33,6 @@ pipeline {
             steps {
                 dir('frontend') {
                     sh '''
-                        apt-get update
-                        apt-get install -y nodejs npm
                         npm install
                         npm run lint:html
                     '''
@@ -49,11 +45,11 @@ pipeline {
                 withCredentials([string(credentialsId: 'Sonarqube-Backend', variable: 'TOKEN')]) {
                     dir('backend') {
                         sh '''
-                        ./gradlew sonar \
-                          -Dsonar.projectKey=DevOpsDemo-Backend \
-                          -Dsonar.projectName="DevOpsDemo-Backend" \
-                          -Dsonar.host.url=http://host.docker.internal:9000 \
-                          -Dsonar.token=${TOKEN}
+                            ./gradlew sonar \
+                              -Dsonar.projectKey=DevOpsDemo-Backend \
+                              -Dsonar.projectName="DevOpsDemo-Backend" \
+                              -Dsonar.host.url=http://host.docker.internal:9000 \
+                              -Dsonar.token=${TOKEN}
                         '''
                     }
                 }
@@ -65,11 +61,11 @@ pipeline {
                 withCredentials([string(credentialsId: 'Sonarqube-Frontend', variable: 'TOKEN')]) {
                     dir('frontend') {
                         sh '''
-                        npx sonar-scanner \
-                          -Dsonar.projectKey=DevOpsDemo-Frontend \
-                          -Dsonar.projectName="DevOpsDemo-Frontend" \
-                          -Dsonar.host.url=http://host.docker.internal:9000 \
-                          -Dsonar.token=${TOKEN}
+                            npx sonar-scanner \
+                              -Dsonar.projectKey=DevOpsDemo-Frontend \
+                              -Dsonar.projectName="DevOpsDemo-Frontend" \
+                              -Dsonar.host.url=http://host.docker.internal:9000 \
+                              -Dsonar.token=${TOKEN}
                         '''
                     }
                 }
@@ -79,8 +75,8 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
-                echo "Building Docker image..."
-                docker build -t mosazhaw/devopsdemo .
+                    echo "Building Docker image..."
+                    docker build -t mosazhaw/devopsdemo .
                 '''
             }
         }
