@@ -1,7 +1,7 @@
 pipeline {
     agent {
         dockerContainer {
-            image 'mosazhaw/jenkins-agent-full'
+            image 'jenkins/agent:jdk21'
             dockerHost 'tcp://host.docker.internal:2375'
             // falls du Credentials brauchst:
             // credentialsId 'dein-cred-id'
