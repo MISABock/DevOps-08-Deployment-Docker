@@ -1,0 +1,370 @@
+Started by user michae bock
+Obtained Jenkinsfile from git https://github.com/MISABock/DevOps-07-CI2.git
+[Pipeline] Start of Pipeline
+[Pipeline] dockerNode
+Launching new docker node based on mosazhaw/jenkins-agent:jdk21-1.3
+Waiting for node to be online ...
+Node docker-00015mhx2yzw2 is online.
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: git
+using credential bockmic1
+Cloning the remote Git repository
+Cloning repository https://github.com/MISABock/DevOps-07-CI2.git
+ > git init /home/jenkins/workspace # timeout=10
+Fetching upstream changes from https://github.com/MISABock/DevOps-07-CI2.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/MISABock/DevOps-07-CI2.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Checking out Revision dadff181cb59f25b294897156d5e0a035ad96122 (refs/remotes/origin/main)
+ > git config remote.origin.url https://github.com/MISABock/DevOps-07-CI2.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f dadff181cb59f25b294897156d5e0a035ad96122 # timeout=10
+Commit message: "files added"
+ > git rev-list --no-walk 1162daa889371c0e11f3c0100951dc5b1d7c7cfd # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+The recommended git tool is: git
+using credential bockmic1
+Fetching changes from the remote Git repository
+Checking out Revision dadff181cb59f25b294897156d5e0a035ad96122 (refs/remotes/origin/main)
+Commit message: "files added"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] sh
+ > git rev-parse --resolve-git-dir /home/jenkins/workspace/.git # timeout=10
+ > git config remote.origin.url https://github.com/MISABock/DevOps-07-CI2.git # timeout=10
+Fetching upstream changes from https://github.com/MISABock/DevOps-07-CI2.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/MISABock/DevOps-07-CI2.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f dadff181cb59f25b294897156d5e0a035ad96122 # timeout=10
++ echo Starting build...
+Starting build...
+[Pipeline] dir
+Running in /home/jenkins/workspace/backend
+[Pipeline] {
+[Pipeline] sh
++ chmod +x ./gradlew
+[Pipeline] sh
++ ./gradlew test
+Downloading https://services.gradle.org/distributions/gradle-8.10.2-bin.zip
+.............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%
+
+Welcome to Gradle 8.10.2!
+
+Here are the highlights of this release:
+ - Support for Java 23
+ - Faster configuration cache
+ - Better configuration cache reports
+
+For more details see https://docs.gradle.org/8.10.2/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :compileJava
+> Task :processResources
+> Task :classes
+> Task :compileTestJava
+> Task :processTestResources NO-SOURCE
+> Task :testClasses
+> Task :test
+> Task :jacocoTestReport
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.10.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1m 17s
+5 actionable tasks: 5 executed
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] jacoco
+[JaCoCo plugin] Collecting JaCoCo coverage data...
+[JaCoCo plugin] Version: 3.3.7
+[JaCoCo plugin] **/**.exec;**/classes;**/src/main/java; locations are configured
+[JaCoCo plugin] Number of found exec files for pattern **/**.exec: 1
+[JaCoCo plugin] Saving matched execfiles:  /home/jenkins/workspace/backend/build/jacoco/test.exec
+[JaCoCo plugin] Saving matched class directories for class-pattern: **/classes: 
+[JaCoCo plugin]  - /home/jenkins/workspace/backend/build/classes 15 files
+[JaCoCo plugin]  - /home/jenkins/workspace/backend/build/reports/tests/test/classes 0 files
+[JaCoCo plugin]  - /home/jenkins/workspace/frontend/node_modules/axios/lib/env/classes 0 files
+[JaCoCo plugin]  - /home/jenkins/workspace/frontend/node_modules/axios/lib/platform/browser/classes 0 files
+[JaCoCo plugin]  - /home/jenkins/workspace/frontend/node_modules/axios/lib/platform/node/classes 0 files
+[JaCoCo plugin]  - /home/jenkins/workspace/frontend/node_modules/semver/classes 0 files
+[JaCoCo plugin] Saving matched source directories for source-pattern: **/src/main/java: 
+[JaCoCo plugin] Source Inclusions: **/*.java,**/*.groovy,**/*.kt,**/*.kts
+[JaCoCo plugin] Source Exclusions: 
+[JaCoCo plugin] - /home/jenkins/workspace/backend/src/main/java 6 files
+[JaCoCo plugin] Loading inclusions files..
+[JaCoCo plugin] inclusions: []
+[JaCoCo plugin] exclusions: []
+[JaCoCo plugin] Thresholds: JacocoHealthReportThresholds [minClass=0, maxClass=0, minMethod=0, maxMethod=0, minLine=0, maxLine=0, minBranch=0, maxBranch=0, minInstruction=0, maxInstruction=0, minComplexity=0, maxComplexity=0]
+[JaCoCo plugin] Publishing the results..
+[JaCoCo plugin] Loading packages..
+[JaCoCo plugin] Done.
+[JaCoCo plugin] Overall coverage: class: 86.666664, method: 92.77108, line: 92.73356, branch: 76.0, instruction: 92.34275, complexity: 84.25926
+[Pipeline] junit
+Recording test results
+[Checks API] No suitable checks publisher found.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Frontend Lint)
+[Pipeline] tool
+Installing NodeJS from /var/jenkins_home/caches/nodejs/LINUX/amd64/23.11.0.tar.gz to /home/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS_23.11.0 on docker-00015mhx2yzw2
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /home/jenkins/workspace/frontend
+[Pipeline] {
+[Pipeline] sh
++ npm install
+
+up to date, audited 560 packages in 2s
+
+63 packages are looking for funding
+  run `npm fund` for details
+
+3 vulnerabilities (1 moderate, 2 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
++ npm run lint:html
+
+> devopsdemo@0.2.0 lint:html
+> node node_modules/htmlhint/bin/htmlhint *.html
+
+
+   Config loaded: /home/jenkins/workspace/frontend/.htmlhintrc
+
+Scanned 1 files, no errors found (7 ms).
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Backend)
+[Pipeline] withCredentials
+Masking supported pattern matches of $TOKEN
+[Pipeline] {
+[Pipeline] dir
+Running in /home/jenkins/workspace/backend
+[Pipeline] {
+[Pipeline] sh
++ ./gradlew sonar -Dsonar.projectKey=DevOpsDemo-Backend -Dsonar.projectName=DevOpsDemo-Backend -Dsonar.host.url=http://host.docker.internal:9000 -Dsonar.token=****
+> Task :sonar
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.10.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 9s
+1 actionable task: 1 executed
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Frontend)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $TOKEN
+[Pipeline] {
+[Pipeline] dir
+Running in /home/jenkins/workspace/frontend
+[Pipeline] {
+[Pipeline] sh
++ npm install -g sonar-scanner
+
+added 1 package in 1s
++ sonar-scanner -Dsonar.projectKey=DevOpsDemo-Frontend -Dsonar.projectName=DevOpsDemo-Frontend -Dsonar.host.url=http://host.docker.internal:9000 -Dsonar.token=****
+INFO: Scanner configuration file: /home/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS_23.11.0/lib/node_modules/sonar-scanner/conf/sonar-scanner.properties
+INFO: Project root configuration file: /home/jenkins/workspace/frontend/sonar-project.properties
+INFO: SonarQube Scanner 3.1.0.1141
+INFO: Java 21.0.5 Eclipse Adoptium (64-bit)
+INFO: Linux 5.15.167.4-microsoft-standard-WSL2 amd64
+INFO: User cache: /home/jenkins/.sonar/cache
+INFO: SonarQube server 25.4.0.105899
+INFO: Default locale: "en", source code encoding: "UTF-8" (analysis is platform dependent)
+INFO: Load global settings
+INFO: Load global settings (done) | time=60ms
+INFO: Server id: 147B411E-AZZNONlN1H4ar_L9AjQV
+INFO: Loading required plugins
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=38ms
+INFO: Load/download plugins
+INFO: Load/download plugins (done) | time=26ms
+INFO: Process project properties
+INFO: Process project properties (done) | time=12ms
+INFO: Project key: DevOpsDemo-Frontend
+INFO: Base dir: /home/jenkins/workspace/frontend
+INFO: Working dir: /home/jenkins/workspace/frontend/.scannerwork
+INFO: Load project settings for component key: 'DevOpsDemo-Frontend'
+INFO: Load project settings for component key: 'DevOpsDemo-Frontend' (done) | time=16ms
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=93ms
+INFO: Auto-configuring with CI 'Jenkins'
+INFO: Load active rules
+INFO: Load active rules (done) | time=371ms
+INFO: Load analysis cache
+INFO: Load analysis cache (801 bytes) | time=14ms
+INFO: Preprocessing files...
+INFO: 2 languages detected in 715 preprocessed files
+INFO: 8531 files ignored because of inclusion/exclusion patterns
+INFO: 0 files ignored because of scm ignore settings
+INFO: Loading plugins for detected languages
+INFO: Load/download plugins
+INFO: Load/download plugins (done) | time=3129ms
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=79ms
+INFO: Indexing files...
+INFO: Project configuration:
+INFO:   Included sources: **/*.html, **/*.json
+INFO:   Excluded sources: node-modules/**
+INFO: 715 files indexed
+INFO: Quality profile for json: Sonar way
+INFO: Quality profile for web: Sonar way
+INFO: ------------- Run sensors on module DevOpsDemo-Frontend
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=24ms
+INFO: Sensor JaCoCo XML Report Importer [jacoco]
+INFO: 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+INFO: No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+INFO: Sensor JaCoCo XML Report Importer [jacoco] (done) | time=4ms
+INFO: Sensor IaC CloudFormation Sensor [iac]
+INFO: 0 source files to be analyzed
+INFO: 0/0 source files have been analyzed
+INFO: Sensor IaC CloudFormation Sensor [iac] (done) | time=299ms
+INFO: Sensor IaC AzureResourceManager Sensor [iac]
+INFO: 0 source files to be analyzed
+INFO: 0/0 source files have been analyzed
+INFO: Sensor IaC AzureResourceManager Sensor [iac] (done) | time=145ms
+INFO: Sensor Java Config Sensor [iac]
+INFO: 0 source files to be analyzed
+INFO: 0/0 source files have been analyzed
+INFO: Sensor Java Config Sensor [iac] (done) | time=13ms
+INFO: Sensor HTML [web]
+INFO: Sensor HTML [web] (done) | time=106ms
+INFO: Sensor JavaScript inside HTML analysis [javascript]
+INFO: Detected os: Linux arch: amd64 alpine: false. Platform: LINUX_X64
+INFO: Deploy location /home/jenkins/.sonar/js/node-runtime, tagetRuntime: /home/jenkins/.sonar/js/node-runtime/node,  version: /home/jenkins/.sonar/js/node-runtime/version.txt
+INFO: Using embedded Node.js runtime.
+INFO: Using Node.js executable: '/home/jenkins/.sonar/js/node-runtime/node'.
+INFO: Memory configuration: OS (15798 MB), Node.js (4144 MB).
+INFO: 5 source files to be analyzed
+INFO: 5/5 source files have been analyzed
+INFO: Hit the cache for 0 out of 5
+INFO: Miss the cache for 5 out of 5: ANALYSIS_MODE_INELIGIBLE [5/5]
+INFO: Sensor JavaScript inside HTML analysis [javascript] (done) | time=6367ms
+INFO: Sensor CSS Rules [javascript]
+INFO: 5 source files to be analyzed
+INFO: 5/5 source files have been analyzed
+INFO: Hit the cache for 0 out of 0
+INFO: Miss the cache for 0 out of 0
+INFO: Sensor CSS Rules [javascript] (done) | time=73ms
+INFO: Sensor IaC Docker Sensor [iac]
+INFO: 0 source files to be analyzed
+INFO: 0/0 source files have been analyzed
+INFO: Sensor IaC Docker Sensor [iac] (done) | time=43ms
+INFO: Sensor TextAndSecretsSensor [text]
+INFO: Available processors: 20
+INFO: Using 20 threads for analysis.
+INFO: The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test" or "tests"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+INFO: Using git CLI to retrieve untracked files
+INFO: Analyzing language associated files and files included via "sonar.text.inclusions" that are tracked by git
+INFO: 715 source files to be analyzed
+INFO: 715/715 source files have been analyzed
+INFO: Sensor TextAndSecretsSensor [text] (done) | time=1023ms
+INFO: ------------- Run sensors on project
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=22ms
+INFO: ------------- Gather SCA dependencies on project
+INFO: Dependency analysis skipped
+INFO: CPD Executor 2 files had no CPD blocks
+INFO: CPD Executor Calculating CPD for 3 files
+INFO: CPD Executor CPD calculation finished (done) | time=16ms
+INFO: SCM revision ID 'dadff181cb59f25b294897156d5e0a035ad96122'
+INFO: Analysis report generated in 112ms, dir size=236.1 kB
+INFO: Analysis report compressed in 24ms, zip size=31.3 kB
+INFO: Analysis report uploaded in 19ms
+INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://host.docker.internal:9000/dashboard?id=DevOpsDemo-Frontend
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at http://host.docker.internal:9000/api/ce/task?id=afb9cd6e-6a54-4854-8e1d-a47e4b628478
+INFO: Analysis total time: 14.020 s
+INFO: ------------------------------------------------------------------------
+INFO: EXECUTION SUCCESS
+INFO: ------------------------------------------------------------------------
+INFO: Total time: 15.365s
+INFO: Final Memory: 15M/74M
+INFO: ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Docker Build)
+[Pipeline] dir
+Running in /home/jenkins/workspace/backend
+[Pipeline] {
+[Pipeline] sh
++ echo Building Docker image...
+Building Docker image...
++ docker build -f docker.dockerfile -t mosazhaw/devopsdemo .
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+Terminating docker node ...
+Disconnected computer for node 'docker-00015mhx2yzw2'.
+Removed Node for node 'docker-00015mhx2yzw2'.
+[Pipeline] // dockerNode
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE
