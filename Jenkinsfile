@@ -30,6 +30,9 @@ pipeline {
         }
 
         stage('Frontend Lint') {
+            tools {
+                nodejs 'NodeJS 23.11.0' // 👉 Name exakt wie in deiner Jenkins Tool Config
+            }
             steps {
                 dir('frontend') {
                     sh '''
