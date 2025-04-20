@@ -59,13 +59,16 @@ pipeline {
             }
         }
 
-       stage('SonarQube Frontend') {
+stage('SonarQube Frontend') {
+    tools {
+        nodejs 'NodeJS 23.11.0' // ✅ wie auch in Lint-Stage
+    }
     steps {
         withCredentials([string(credentialsId: 'Sonarqube-Frontend', variable: 'TOKEN')]) {
             dir('frontend') {
                 sh '''
                     npm install
-                    node node_modules/sonar-scanner/bin/sonar-scanner \
+                    npx sonar-scanner \
                       -Dsonar.projectKey=DevOpsDemo-Frontend \
                       -Dsonar.projectName="DevOpsDemo-Frontend" \
                       -Dsonar.host.url=http://host.docker.internal:9000 \
@@ -75,6 +78,7 @@ pipeline {
         }
     }
 }
+
 
 
         stage('Docker Build') {
