@@ -6,11 +6,6 @@ pipeline {
         }
     }
 
-    // ab hier dein bestehender Code...
-}
-
-
-
     environment {
         DOCKER_HOST = "unix:///var/run/docker.sock"
     }
@@ -36,18 +31,18 @@ pipeline {
             }
         }
 
-stage('Frontend Lint') {
-    steps {
-        dir('frontend') {
-            sh '''
-                apt-get update
-                apt-get install -y nodejs npm
-                npm install
-                npm run lint:html
-            '''
+        stage('Frontend Lint') {
+            steps {
+                dir('frontend') {
+                    sh '''
+                        apt-get update
+                        apt-get install -y nodejs npm
+                        npm install
+                        npm run lint:html
+                    '''
+                }
+            }
         }
-    }
-}
 
         stage('SonarQube Backend') {
             steps {
@@ -90,4 +85,4 @@ stage('Frontend Lint') {
             }
         }
     }
-
+}
