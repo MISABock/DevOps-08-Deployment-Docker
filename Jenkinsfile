@@ -58,36 +58,35 @@ pipeline {
                 }
             }
         }
-stage('SonarQube Frontend') {
-    tools {
-        nodejs 'NodeJS 23.11.0'
-    }
-    steps {
-        withCredentials([string(credentialsId: 'Sonarqube-Frontend', variable: 'TOKEN')]) {
-            dir('frontend') {
-                sh '''
-                    npm install -g sonar-scanner
-                    sonar-scanner \
-                      -Dsonar.projectKey=DevOpsDemo-Frontend \
-                      -Dsonar.projectName="DevOpsDemo-Frontend" \
-                      -Dsonar.host.url=http://host.docker.internal:9000 \
-                      -Dsonar.token=${TOKEN}
-                '''
+
+        stage('SonarQube Frontend') {
+            tools {
+                nodejs 'NodeJS 23.11.0'
+            }
+            steps {
+                withCredentials([string(credentialsId: 'Sonarqube-Frontend', variable: 'TOKEN')]) {
+                    dir('frontend') {
+                        sh '''
+                            npm install -g sonar-scanner
+                            sonar-scanner \
+                              -Dsonar.projectKey=DevOpsDemo-Frontend \
+                              -Dsonar.projectName="DevOpsDemo-Frontend" \
+                              -Dsonar.host.url=http://host.docker.internal:9000 \
+                              -Dsonar.token=${TOKEN}
+                        '''
+                    }
+                }
             }
         }
-    }
-}
-
-
-
-
 
         stage('Docker Build') {
             steps {
-                sh '''
-                    echo "Building Docker image..."
-                    docker build -t mosazhaw/devopsdemo .
-                '''
+                dir('backend') {
+                    sh '''
+                        echo "Building Docker image..."
+                        docker build -f docker.dockerfile -t mosazhaw/devopsdemo .
+                    '''
+                }
             }
         }
     }
