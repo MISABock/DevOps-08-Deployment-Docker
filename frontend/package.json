@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "serve",
-    "lint:html": "npx htmlhint *.html",
+    "lint:html": "node node_modules/htmlhint/bin/htmlhint *.html",
     "test-local-chrome": "npx selenium-side-runner tests/test.side --output-directory=./tests/test-reports --config-file tests/local-selenium-chrome.yml",
     "test-local-firefox": "npx selenium-side-runner tests/test.side --output-directory=./tests/test-reports --config-file tests/local-selenium-firefox.yml",
     "test-jenkins-chrome": "npx selenium-side-runner tests/test.side --output-directory=./tests/test-reports --config-file tests/jenkins-selenium-chrome.yml",
