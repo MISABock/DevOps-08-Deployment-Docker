@@ -34,3 +34,13 @@ letztlich habe ich dann noch definiert, dass zuerst das image gebaut werden soll
 
 mit localhost:3001 habe ich dann geprüft, ob die App läuft: (![RunningOn3001](images/RunningOn3001.png))
 (![RunningOn3000Logs](images/RunningOn3000Logs.png))
+
+Damit ich das das Image auf Docker Hub uploaden kann, habe ich zuerst einen Docker Hub Access Token erstellt: 
+(![createdAccessToken](images/createdAccessToken.png))
+
+Auf folgendem Bild sieht man das Image auf Docker Hub (![ImageOnDockerHub](images/ImageOnDockerHub.png))
+
+Als nächstes habe ich einen Render Account erstellt. (![RenderAccount](images/RenderAccount.png))
+
+den Deploy-hook kopiert und diesen als Credential an Jenkins übergeben: (![DeployHook](images/DeployHook.png))
+(![RenderToken](images/RenderToken.png))
