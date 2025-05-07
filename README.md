@@ -51,3 +51,14 @@ Als nächstes habe ich das JenkinsFile angepasst und die Pipeline nochmals gesta
 Trigger gemäss Anleitung definiert: (![trigger](images/trigger.png))
 
 Auf folgendem Bild sieht man, wie die App auf Render läuft: (![RunningOnRender](images/RunningOnRender.png))
+
+(![Changed](images/Changed.png))
+
+zweites commit & push 
+
+(![SecondChange](images/SecondChange.png))
+
+(![deployementChange](images/deployementChange.png))
+
+
+

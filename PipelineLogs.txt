@@ -1,10 +1,42 @@
+Skip to content
+[Jenkins]Jenkins
+3
+1
+michae bock
+Abmelden
+
+    Dashboard
+    bockmic1PipelineHelloWorld
+    #49
+
+Status
+Changes
+Console Output
+Edit Build Information
+Delete build ‘#49’
+Timings
+Git Build Data
+Testabdeckung
+Testergebnis
+Pipeline Overview
+Pipeline Console
+Restart from Stage
+Replay
+Pipeline Steps
+Workspaces
+Previous Build
+Erfolgreich
+Konsolenausgabe
+Download
+View as plain text
+
 Started by user michae bock
 Obtained Jenkinsfile from git https://github.com/MISABock/DevOps-07-CI2.git
 [Pipeline] Start of Pipeline
 [Pipeline] dockerNode
 Launching new docker node based on mosazhaw/jenkins-agent:jdk21-1.3
 Waiting for node to be online ...
-Node docker-00015mhx2yzw2 is online.
+Node docker-0001sxnw65ogh is online.
 [Pipeline] {
 [Pipeline] stage
 [Pipeline] { (Declarative: Checkout SCM)
@@ -20,18 +52,16 @@ Fetching upstream changes from https://github.com/MISABock/DevOps-07-CI2.git
 using GIT_ASKPASS to set credentials 
  > git fetch --tags --force --progress -- https://github.com/MISABock/DevOps-07-CI2.git +refs/heads/*:refs/remotes/origin/* # timeout=10
 Avoid second fetch
-Checking out Revision dadff181cb59f25b294897156d5e0a035ad96122 (refs/remotes/origin/main)
+Checking out Revision 0d524b38796bc1fc8a19de84f0d2a87ba42b70d2 (refs/remotes/origin/main)
  > git config remote.origin.url https://github.com/MISABock/DevOps-07-CI2.git # timeout=10
  > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
  > git config core.sparsecheckout # timeout=10
- > git checkout -f dadff181cb59f25b294897156d5e0a035ad96122 # timeout=10
-Commit message: "files added"
- > git rev-list --no-walk 1162daa889371c0e11f3c0100951dc5b1d7c7cfd # timeout=10
+ > git checkout -f 0d524b38796bc1fc8a19de84f0d2a87ba42b70d2 # timeout=10
+Commit message: "updated"
+ > git rev-list --no-walk 0d524b38796bc1fc8a19de84f0d2a87ba42b70d2 # timeout=10
 [Pipeline] }
 [Pipeline] // stage
-[Pipeline] withEnv
-[Pipeline] {
 [Pipeline] withEnv
 [Pipeline] {
 [Pipeline] stage
@@ -40,8 +70,8 @@ Commit message: "files added"
 The recommended git tool is: git
 using credential bockmic1
 Fetching changes from the remote Git repository
-Checking out Revision dadff181cb59f25b294897156d5e0a035ad96122 (refs/remotes/origin/main)
-Commit message: "files added"
+Checking out Revision 0d524b38796bc1fc8a19de84f0d2a87ba42b70d2 (refs/remotes/origin/main)
+Commit message: "updated"
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
@@ -56,7 +86,7 @@ using GIT_ASKPASS to set credentials
  > git fetch --tags --force --progress -- https://github.com/MISABock/DevOps-07-CI2.git +refs/heads/*:refs/remotes/origin/* # timeout=10
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
  > git config core.sparsecheckout # timeout=10
- > git checkout -f dadff181cb59f25b294897156d5e0a035ad96122 # timeout=10
+ > git checkout -f 0d524b38796bc1fc8a19de84f0d2a87ba42b70d2 # timeout=10
 + echo Starting build...
 Starting build...
 [Pipeline] dir
@@ -94,7 +124,7 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.10.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 1m 17s
+BUILD SUCCESSFUL in 50s
 5 actionable tasks: 5 executed
 [Pipeline] }
 [Pipeline] // dir
@@ -131,7 +161,7 @@ Recording test results
 [Pipeline] stage
 [Pipeline] { (Frontend Lint)
 [Pipeline] tool
-Installing NodeJS from /var/jenkins_home/caches/nodejs/LINUX/amd64/23.11.0.tar.gz to /home/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS_23.11.0 on docker-00015mhx2yzw2
+Installing NodeJS from /var/jenkins_home/caches/nodejs/LINUX/amd64/23.11.0.tar.gz to /home/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS_23.11.0 on docker-0001sxnw65ogh
 [Pipeline] envVarsForTool
 [Pipeline] withEnv
 [Pipeline] {
@@ -141,7 +171,7 @@ Running in /home/jenkins/workspace/frontend
 [Pipeline] sh
 + npm install
 
-up to date, audited 560 packages in 2s
+up to date, audited 560 packages in 1s
 
 63 packages are looking for funding
   run `npm fund` for details
@@ -160,7 +190,7 @@ Run `npm audit` for details.
 
    Config loaded: /home/jenkins/workspace/frontend/.htmlhintrc
 
-Scanned 1 files, no errors found (7 ms).
+Scanned 1 files, no errors found (8 ms).
 [Pipeline] }
 [Pipeline] // dir
 [Pipeline] }
@@ -185,7 +215,7 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.10.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 9s
+BUILD SUCCESSFUL in 10s
 1 actionable task: 1 executed
 [Pipeline] }
 [Pipeline] // dir
@@ -208,7 +238,7 @@ Running in /home/jenkins/workspace/frontend
 [Pipeline] sh
 + npm install -g sonar-scanner
 
-added 1 package in 1s
+added 1 package in 496ms
 + sonar-scanner -Dsonar.projectKey=DevOpsDemo-Frontend -Dsonar.projectName=DevOpsDemo-Frontend -Dsonar.host.url=http://host.docker.internal:9000 -Dsonar.token=****
 INFO: Scanner configuration file: /home/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS_23.11.0/lib/node_modules/sonar-scanner/conf/sonar-scanner.properties
 INFO: Project root configuration file: /home/jenkins/workspace/frontend/sonar-project.properties
@@ -219,36 +249,36 @@ INFO: User cache: /home/jenkins/.sonar/cache
 INFO: SonarQube server 25.4.0.105899
 INFO: Default locale: "en", source code encoding: "UTF-8" (analysis is platform dependent)
 INFO: Load global settings
-INFO: Load global settings (done) | time=60ms
+INFO: Load global settings (done) | time=80ms
 INFO: Server id: 147B411E-AZZNONlN1H4ar_L9AjQV
 INFO: Loading required plugins
 INFO: Load plugins index
-INFO: Load plugins index (done) | time=38ms
+INFO: Load plugins index (done) | time=54ms
 INFO: Load/download plugins
-INFO: Load/download plugins (done) | time=26ms
+INFO: Load/download plugins (done) | time=38ms
 INFO: Process project properties
-INFO: Process project properties (done) | time=12ms
+INFO: Process project properties (done) | time=14ms
 INFO: Project key: DevOpsDemo-Frontend
 INFO: Base dir: /home/jenkins/workspace/frontend
 INFO: Working dir: /home/jenkins/workspace/frontend/.scannerwork
 INFO: Load project settings for component key: 'DevOpsDemo-Frontend'
-INFO: Load project settings for component key: 'DevOpsDemo-Frontend' (done) | time=16ms
+INFO: Load project settings for component key: 'DevOpsDemo-Frontend' (done) | time=18ms
 INFO: Load quality profiles
-INFO: Load quality profiles (done) | time=93ms
+INFO: Load quality profiles (done) | time=57ms
 INFO: Auto-configuring with CI 'Jenkins'
 INFO: Load active rules
-INFO: Load active rules (done) | time=371ms
+INFO: Load active rules (done) | time=279ms
 INFO: Load analysis cache
-INFO: Load analysis cache (801 bytes) | time=14ms
+INFO: Load analysis cache (801 bytes) | time=17ms
 INFO: Preprocessing files...
 INFO: 2 languages detected in 715 preprocessed files
 INFO: 8531 files ignored because of inclusion/exclusion patterns
 INFO: 0 files ignored because of scm ignore settings
 INFO: Loading plugins for detected languages
 INFO: Load/download plugins
-INFO: Load/download plugins (done) | time=3129ms
+INFO: Load/download plugins (done) | time=3405ms
 INFO: Load project repositories
-INFO: Load project repositories (done) | time=79ms
+INFO: Load project repositories (done) | time=89ms
 INFO: Indexing files...
 INFO: Project configuration:
 INFO:   Included sources: **/*.html, **/*.json
@@ -258,25 +288,25 @@ INFO: Quality profile for json: Sonar way
 INFO: Quality profile for web: Sonar way
 INFO: ------------- Run sensors on module DevOpsDemo-Frontend
 INFO: Load metrics repository
-INFO: Load metrics repository (done) | time=24ms
+INFO: Load metrics repository (done) | time=22ms
 INFO: Sensor JaCoCo XML Report Importer [jacoco]
 INFO: 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
 INFO: No report imported, no coverage information will be imported by JaCoCo XML Report Importer
-INFO: Sensor JaCoCo XML Report Importer [jacoco] (done) | time=4ms
+INFO: Sensor JaCoCo XML Report Importer [jacoco] (done) | time=2ms
 INFO: Sensor IaC CloudFormation Sensor [iac]
 INFO: 0 source files to be analyzed
 INFO: 0/0 source files have been analyzed
-INFO: Sensor IaC CloudFormation Sensor [iac] (done) | time=299ms
+INFO: Sensor IaC CloudFormation Sensor [iac] (done) | time=268ms
 INFO: Sensor IaC AzureResourceManager Sensor [iac]
 INFO: 0 source files to be analyzed
 INFO: 0/0 source files have been analyzed
-INFO: Sensor IaC AzureResourceManager Sensor [iac] (done) | time=145ms
+INFO: Sensor IaC AzureResourceManager Sensor [iac] (done) | time=118ms
 INFO: Sensor Java Config Sensor [iac]
 INFO: 0 source files to be analyzed
 INFO: 0/0 source files have been analyzed
-INFO: Sensor Java Config Sensor [iac] (done) | time=13ms
+INFO: Sensor Java Config Sensor [iac] (done) | time=11ms
 INFO: Sensor HTML [web]
-INFO: Sensor HTML [web] (done) | time=106ms
+INFO: Sensor HTML [web] (done) | time=93ms
 INFO: Sensor JavaScript inside HTML analysis [javascript]
 INFO: Detected os: Linux arch: amd64 alpine: false. Platform: LINUX_X64
 INFO: Deploy location /home/jenkins/.sonar/js/node-runtime, tagetRuntime: /home/jenkins/.sonar/js/node-runtime/node,  version: /home/jenkins/.sonar/js/node-runtime/version.txt
@@ -287,17 +317,17 @@ INFO: 5 source files to be analyzed
 INFO: 5/5 source files have been analyzed
 INFO: Hit the cache for 0 out of 5
 INFO: Miss the cache for 5 out of 5: ANALYSIS_MODE_INELIGIBLE [5/5]
-INFO: Sensor JavaScript inside HTML analysis [javascript] (done) | time=6367ms
+INFO: Sensor JavaScript inside HTML analysis [javascript] (done) | time=5818ms
 INFO: Sensor CSS Rules [javascript]
 INFO: 5 source files to be analyzed
 INFO: 5/5 source files have been analyzed
 INFO: Hit the cache for 0 out of 0
 INFO: Miss the cache for 0 out of 0
-INFO: Sensor CSS Rules [javascript] (done) | time=73ms
+INFO: Sensor CSS Rules [javascript] (done) | time=75ms
 INFO: Sensor IaC Docker Sensor [iac]
 INFO: 0 source files to be analyzed
 INFO: 0/0 source files have been analyzed
-INFO: Sensor IaC Docker Sensor [iac] (done) | time=43ms
+INFO: Sensor IaC Docker Sensor [iac] (done) | time=33ms
 INFO: Sensor TextAndSecretsSensor [text]
 INFO: Available processors: 20
 INFO: Using 20 threads for analysis.
@@ -311,27 +341,27 @@ INFO: Using git CLI to retrieve untracked files
 INFO: Analyzing language associated files and files included via "sonar.text.inclusions" that are tracked by git
 INFO: 715 source files to be analyzed
 INFO: 715/715 source files have been analyzed
-INFO: Sensor TextAndSecretsSensor [text] (done) | time=1023ms
+INFO: Sensor TextAndSecretsSensor [text] (done) | time=1345ms
 INFO: ------------- Run sensors on project
 INFO: Sensor Zero Coverage Sensor
-INFO: Sensor Zero Coverage Sensor (done) | time=22ms
+INFO: Sensor Zero Coverage Sensor (done) | time=6ms
 INFO: ------------- Gather SCA dependencies on project
 INFO: Dependency analysis skipped
 INFO: CPD Executor 2 files had no CPD blocks
 INFO: CPD Executor Calculating CPD for 3 files
-INFO: CPD Executor CPD calculation finished (done) | time=16ms
-INFO: SCM revision ID 'dadff181cb59f25b294897156d5e0a035ad96122'
-INFO: Analysis report generated in 112ms, dir size=236.1 kB
-INFO: Analysis report compressed in 24ms, zip size=31.3 kB
-INFO: Analysis report uploaded in 19ms
+INFO: CPD Executor CPD calculation finished (done) | time=13ms
+INFO: SCM revision ID '0d524b38796bc1fc8a19de84f0d2a87ba42b70d2'
+INFO: Analysis report generated in 97ms, dir size=236.1 kB
+INFO: Analysis report compressed in 18ms, zip size=31.3 kB
+INFO: Analysis report uploaded in 26ms
 INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://host.docker.internal:9000/dashboard?id=DevOpsDemo-Frontend
 INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
-INFO: More about the report processing at http://host.docker.internal:9000/api/ce/task?id=afb9cd6e-6a54-4854-8e1d-a47e4b628478
-INFO: Analysis total time: 14.020 s
+INFO: More about the report processing at http://host.docker.internal:9000/api/ce/task?id=2d782677-f1c4-4d31-87ca-6638b66e5525
+INFO: Analysis total time: 13.933 s
 INFO: ------------------------------------------------------------------------
 INFO: EXECUTION SUCCESS
 INFO: ------------------------------------------------------------------------
-INFO: Total time: 15.365s
+INFO: Total time: 15.447s
 INFO: Final Memory: 15M/74M
 INFO: ------------------------------------------------------------------------
 [Pipeline] }
@@ -343,28 +373,229 @@ INFO: ------------------------------------------------------------------------
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
-[Pipeline] { (Docker Build)
+[Pipeline] { (Docker Build & Push)
 [Pipeline] dir
 Running in /home/jenkins/workspace/backend
 [Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER_USER or $DOCKER_PASS
+[Pipeline] {
 [Pipeline] sh
-+ echo Building Docker image...
-Building Docker image...
-+ docker build -f docker.dockerfile -t mosazhaw/devopsdemo .
-Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
++ export DOCKER_HOST=tcp://host.docker.internal:2375
++ docker build -f docker.dockerfile -t ****/node-web-app:latest .
+#1 [internal] load build definition from docker.dockerfile
+#1 sha256:49119b84be5f63600a14a002dd65c58027dd6457d8843f653cc1068014f72eb4
+#1 transferring dockerfile: 274B done
+#1 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk
+#3 sha256:e93b7ad54590f2713210a5b53cfa3b59e8622f6f150bc1181aeb2f958dc763d7
+#3 ...
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre
+#2 sha256:58b10dc1b9d04d7fcca58134523360b6771147dc8aad315b02c1ee5acca3ee6f
+#2 DONE 0.8s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk
+#3 sha256:e93b7ad54590f2713210a5b53cfa3b59e8622f6f150bc1181aeb2f958dc763d7
+#3 DONE 0.9s
+
+#4 [internal] load .dockerignore
+#4 sha256:e1d1f6f3f3cc4fde8ced4d1cd090af4970eb4a1df98010c6eaa82b2718a8d09d
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#10 [build 1/4] FROM docker.io/library/eclipse-temurin:21-jdk@sha256:459772aa6b6e65953bac0496e319b8d4d719e1c05826f8495c99796cef5d2f49
+#10 sha256:541b46cc815bdfa84537ffad880898b5868c26c5e1e8b3a397307ecd21997f18
+#10 resolve docker.io/library/eclipse-temurin:21-jdk@sha256:459772aa6b6e65953bac0496e319b8d4d719e1c05826f8495c99796cef5d2f49 0.0s done
+#10 DONE 0.0s
+
+#12 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre@sha256:3e08d54ec5a8780227a87ef2458a26c27c4b110e4443d25f055fbe2f96907139
+#12 sha256:7d453e4bbad3d8f16510a1acf9e23e6f906d9ebf5c09c022e60845a894361cb7
+#12 resolve docker.io/library/eclipse-temurin:21-jre@sha256:3e08d54ec5a8780227a87ef2458a26c27c4b110e4443d25f055fbe2f96907139 0.0s done
+#12 DONE 0.0s
+
+#8 [internal] load build context
+#8 sha256:75f38580f9995f7e7adb1cb427ebdb80ecf9581366219f15216584b69cc3bab9
+#8 transferring context: 23.52MB 0.8s done
+#8 DONE 0.8s
+
+#9 [build 2/4] WORKDIR /app
+#9 sha256:f131e4288595b02666b088522ead8e4cda6299a42fcb65a664895fb36a5a2a8d
+#9 CACHED
+
+#7 [build 3/4] COPY . .
+#7 sha256:a3562ffc07070f9a855a3a636f8aef6a6cd10cec6da74ec3bfeee8aa81eaf8a5
+#7 DONE 0.7s
+
+#6 [build 4/4] RUN ./gradlew bootJar
+#6 sha256:8ac223524fb5a0648dc17f7a48d0e57bf5f166c28e31790b7b33e13ceabb8bbf
+#6 0.387 Downloading https://services.gradle.org/distributions/gradle-8.10.2-bin.zip
+#6 1.550 .............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%
+#6 16.75 
+#6 16.75 Welcome to Gradle 8.10.2!
+#6 16.75 
+#6 16.75 Here are the highlights of this release:
+#6 16.75  - Support for Java 23
+#6 16.75  - Faster configuration cache
+#6 16.75  - Better configuration cache reports
+#6 16.75 
+#6 16.75 For more details see https://docs.gradle.org/8.10.2/release-notes.html
+#6 16.75 
+#6 16.95 Starting a Gradle Daemon (subsequent builds will be faster)
+#6 38.56 > Task :compileJava
+#6 38.56 > Task :processResources
+#6 38.56 > Task :classes
+#6 38.56 > Task :resolveMainClassName
+#6 39.25 > Task :bootJar
+#6 39.25 
+#6 39.25 BUILD SUCCESSFUL in 38s
+#6 39.25 4 actionable tasks: 4 executed
+#6 DONE 40.0s
+
+#11 [stage-1 2/3] WORKDIR /app
+#11 sha256:d50688b47a0d1db8d0d8f56e6cbcf3ac2265045ff3ffbf4c9612693ad0fae481
+#11 CACHED
+
+#5 [stage-1 3/3] COPY --from=build /app/build/libs/*.jar app.jar
+#5 sha256:3d6c5b6d9a5b29e7c1506b2bb0a2b42c8a2c91a408ee343f1c4a7cebe0826968
+#5 DONE 0.1s
+
+#13 exporting to image
+#13 sha256:0838ad5775fb4bcbfb78bfb3c26e867299480ffa9afd18fda5a76d29b57931f8
+#13 exporting layers
+#13 exporting layers 0.8s done
+#13 exporting manifest sha256:0a40e4de47a29376c5adaea869c0aacd5e62f9700d740b99699839f39d48b5a9 0.0s done
+#13 exporting config sha256:d4af328919a8605e71dd17cc39efa9d92a73a4f79245ca6ecf86ee83d3e294a9 0.0s done
+#13 naming to docker.io/****/node-web-app:latest done
+#13 unpacking to docker.io/****/node-web-app:latest
+#13 unpacking to docker.io/****/node-web-app:latest 0.1s done
+#13 DONE 1.0s
++ echo ****
++ docker login -u **** --password-stdin
+WARNING! Your password will be stored unencrypted in /home/jenkins/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker push ****/node-web-app:latest
+The push refers to repository [docker.io/****/node-web-app]
+a32efa2d47a9: Waiting
+97f6621fedba: Waiting
+0622fac788ed: Waiting
+77cb49bce361: Waiting
+c1b37af7090f: Waiting
+b951fbe67d61: Waiting
+141779bd67f4: Waiting
+b951fbe67d61: Waiting
+141779bd67f4: Waiting
+a32efa2d47a9: Waiting
+97f6621fedba: Waiting
+0622fac788ed: Waiting
+77cb49bce361: Waiting
+c1b37af7090f: Waiting
+141779bd67f4: Waiting
+a32efa2d47a9: Waiting
+97f6621fedba: Waiting
+0622fac788ed: Waiting
+77cb49bce361: Waiting
+c1b37af7090f: Waiting
+b951fbe67d61: Waiting
+c1b37af7090f: Waiting
+b951fbe67d61: Waiting
+141779bd67f4: Waiting
+a32efa2d47a9: Waiting
+97f6621fedba: Waiting
+0622fac788ed: Waiting
+77cb49bce361: Waiting
+b951fbe67d61: Waiting
+141779bd67f4: Waiting
+a32efa2d47a9: Waiting
+97f6621fedba: Waiting
+0622fac788ed: Waiting
+77cb49bce361: Waiting
+c1b37af7090f: Waiting
+c1b37af7090f: Waiting
+b951fbe67d61: Waiting
+141779bd67f4: Waiting
+a32efa2d47a9: Waiting
+97f6621fedba: Waiting
+0622fac788ed: Waiting
+77cb49bce361: Waiting
+b951fbe67d61: Waiting
+141779bd67f4: Waiting
+a32efa2d47a9: Waiting
+97f6621fedba: Waiting
+0622fac788ed: Waiting
+77cb49bce361: Waiting
+c1b37af7090f: Waiting
+b951fbe67d61: Waiting
+141779bd67f4: Waiting
+a32efa2d47a9: Waiting
+97f6621fedba: Waiting
+0622fac788ed: Waiting
+77cb49bce361: Waiting
+c1b37af7090f: Waiting
+97f6621fedba: Waiting
+0622fac788ed: Waiting
+77cb49bce361: Waiting
+c1b37af7090f: Waiting
+b951fbe67d61: Waiting
+141779bd67f4: Waiting
+a32efa2d47a9: Waiting
+b951fbe67d61: Waiting
+141779bd67f4: Waiting
+a32efa2d47a9: Waiting
+97f6621fedba: Layer already exists
+0622fac788ed: Layer already exists
+77cb49bce361: Layer already exists
+c1b37af7090f: Waiting
+141779bd67f4: Layer already exists
+a32efa2d47a9: Layer already exists
+c1b37af7090f: Layer already exists
+b951fbe67d61: Waiting
+b951fbe67d61: Waiting
+b951fbe67d61: Pushed
+latest: digest: sha256:0a40e4de47a29376c5adaea869c0aacd5e62f9700d740b99699839f39d48b5a9 size: 1683
+[Pipeline] }
+[Pipeline] // withCredentials
 [Pipeline] }
 [Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Trigger Render Deployment)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $KEY
+[Pipeline] {
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [KEY]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ curl ****
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0
+100    44  100    44    0     0     29      0  0:00:01  0:00:01 --:--:--    29
+{"deploy":{"id":"dep-d0dj9mpr0fns739a71gg"}}
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // script
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] }
 [Pipeline] // withEnv
 [Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
 Terminating docker node ...
-Disconnected computer for node 'docker-00015mhx2yzw2'.
-Removed Node for node 'docker-00015mhx2yzw2'.
+Disconnected computer for node 'docker-0001sxnw65ogh'.
+Removed Node for node 'docker-0001sxnw65ogh'.
 [Pipeline] // dockerNode
 [Pipeline] End of Pipeline
-ERROR: script returned exit code 1
-Finished: FAILURE
+Finished: SUCCESS
+
+REST API
