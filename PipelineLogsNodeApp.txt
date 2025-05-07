@@ -1,0 +1,245 @@
+Started by user michae bock
+Obtained Jenkinsfile from git https://github.com/MISABock/DevOpsNodeWebApp.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on docker Agent-0001wvjhre90c on Docker Clouds in /home/jenkins/workspace/bockmic1PipelineHelloWorld
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential bockmic1
+Cloning the remote Git repository
+Cloning repository https://github.com/MISABock/DevOpsNodeWebApp.git
+ > git init /home/jenkins/workspace/bockmic1PipelineHelloWorld # timeout=10
+Fetching upstream changes from https://github.com/MISABock/DevOpsNodeWebApp.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/MISABock/DevOpsNodeWebApp.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/MISABock/DevOpsNodeWebApp.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Checking out Revision a254262f7ebe446b686cc2bb45686e55fe11565f (refs/remotes/origin/main)
+Commit message: "Update renderToken"
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a254262f7ebe446b686cc2bb45686e55fe11565f # timeout=10
+ > git rev-list --no-walk c22744bca84841d00893ee7c9b9ba6663f31b3ca # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Docker Build & Push)
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER_USER or $DOCKER_PASS
+[Pipeline] {
+[Pipeline] sh
++ export DOCKER_HOST=tcp://host.docker.internal:2375
++ docker build -t ****/node-web-app:latest .
+#1 [internal] load build definition from Dockerfile
+#1 sha256:11f14cc84d3d75920af972821c8da2bd202e8255395243dbc804ecec130ffdb0
+#1 transferring dockerfile: 347B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/node:22.1.0
+#2 sha256:5d3cf4cf4a0ee4d3c06e3c0d516972d8d5b707e958607712cf3a7b4d07d690cd
+#2 DONE 0.4s
+
+#3 [internal] load .dockerignore
+#3 sha256:e8ab51615f91bb095392d55ca925a32c1658fa0086481e6c18365a3bc448d9a7
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#7 [internal] load build context
+#7 sha256:cd8ba602afc95456e2d97e15af9ac14aedbd5594642335fbf83412bc920a9c9d
+#7 transferring context: 93.46kB 0.0s done
+#7 DONE 0.1s
+
+#9 [1/5] FROM docker.io/library/node:22.1.0@sha256:5a254b77549c0da906b48dd4891a4ccbe5fd34aeb10e831b6ac8e35d3eae7499
+#9 sha256:d401c3096111a3eca8e860c03376724a13c586c47714ed5d32d7406f468d95d4
+#9 resolve docker.io/library/node:22.1.0@sha256:5a254b77549c0da906b48dd4891a4ccbe5fd34aeb10e831b6ac8e35d3eae7499 0.0s done
+#9 DONE 0.0s
+
+#8 [2/5] WORKDIR /usr/src/app
+#8 sha256:8a16a6450d7fee85a734f776e987d5cd5682aa7ece03ca0a543bc260f1f431e3
+#8 CACHED
+
+#6 [3/5] COPY package*.json ./
+#6 sha256:69a1c84e601eb8c430198cc12c96a4aa8f20edd4cd038e96545c04a47de2e819
+#6 CACHED
+
+#5 [4/5] RUN npm install
+#5 sha256:ea54f4b3f51eeba3203545336f6ff938469bc27b72e4d8b70c0374a285d11ed9
+#5 CACHED
+
+#4 [5/5] COPY . .
+#4 sha256:0c60aa70421a6d38564a13d8dffcc17d0c0539faca395fa30fa43228fe9c8c9c
+#4 DONE 0.1s
+
+#10 exporting to image
+#10 sha256:2c3b481292cacf36a1eaaefdfd0f0b26fcedf3d565ae51192f12e1ce7850fb45
+#10 exporting layers 0.1s done
+#10 exporting manifest sha256:e4892dbbf13c84dd2b225644f04a770f695cd35bf14db89dabb21b3158f266f9 0.0s done
+#10 exporting config sha256:509a3104b6609c4cd6e1ac2e0c07f7486cab6f31a560e62afe943d6d865d311b 0.0s done
+#10 naming to docker.io/****/node-web-app:latest done
+#10 unpacking to docker.io/****/node-web-app:latest 0.0s done
+#10 DONE 0.2s
++ echo ****
++ docker login -u **** --password-stdin
+WARNING! Your password will be stored unencrypted in /home/jenkins/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker push ****/node-web-app:latest
+The push refers to repository [docker.io/****/node-web-app]
+891494355808: Waiting
+6582c62583ef: Waiting
+c6cf28de8a06: Waiting
+1654d480f069: Waiting
+5ce41b2d616d: Waiting
+1adfa44fad13: Waiting
+3f8bc8f6c1c3: Waiting
+2b542796ccab: Waiting
+e34ff6e49252: Waiting
+bf2c3e352f3d: Waiting
+1cfae48a7860: Waiting
+73df05f33fe8: Waiting
+891494355808: Waiting
+6582c62583ef: Waiting
+c6cf28de8a06: Waiting
+1654d480f069: Waiting
+73df05f33fe8: Waiting
+5ce41b2d616d: Waiting
+1adfa44fad13: Waiting
+3f8bc8f6c1c3: Waiting
+2b542796ccab: Waiting
+e34ff6e49252: Waiting
+bf2c3e352f3d: Waiting
+1cfae48a7860: Waiting
+3f8bc8f6c1c3: Waiting
+2b542796ccab: Waiting
+e34ff6e49252: Waiting
+bf2c3e352f3d: Waiting
+1cfae48a7860: Waiting
+73df05f33fe8: Waiting
+5ce41b2d616d: Waiting
+1adfa44fad13: Waiting
+891494355808: Waiting
+6582c62583ef: Waiting
+c6cf28de8a06: Waiting
+1654d480f069: Waiting
+73df05f33fe8: Waiting
+5ce41b2d616d: Waiting
+1adfa44fad13: Waiting
+3f8bc8f6c1c3: Waiting
+2b542796ccab: Waiting
+e34ff6e49252: Waiting
+bf2c3e352f3d: Waiting
+1cfae48a7860: Waiting
+891494355808: Waiting
+6582c62583ef: Waiting
+c6cf28de8a06: Waiting
+1654d480f069: Waiting
+73df05f33fe8: Waiting
+5ce41b2d616d: Waiting
+1adfa44fad13: Waiting
+3f8bc8f6c1c3: Waiting
+2b542796ccab: Waiting
+e34ff6e49252: Waiting
+bf2c3e352f3d: Waiting
+1cfae48a7860: Waiting
+891494355808: Waiting
+6582c62583ef: Waiting
+c6cf28de8a06: Waiting
+1654d480f069: Waiting
+891494355808: Waiting
+6582c62583ef: Waiting
+c6cf28de8a06: Waiting
+1654d480f069: Waiting
+73df05f33fe8: Waiting
+5ce41b2d616d: Waiting
+1adfa44fad13: Waiting
+3f8bc8f6c1c3: Waiting
+2b542796ccab: Waiting
+e34ff6e49252: Waiting
+bf2c3e352f3d: Waiting
+1cfae48a7860: Waiting
+1654d480f069: Waiting
+891494355808: Waiting
+6582c62583ef: Layer already exists
+c6cf28de8a06: Waiting
+bf2c3e352f3d: Waiting
+1cfae48a7860: Waiting
+73df05f33fe8: Waiting
+5ce41b2d616d: Waiting
+1adfa44fad13: Waiting
+3f8bc8f6c1c3: Waiting
+2b542796ccab: Waiting
+e34ff6e49252: Waiting
+891494355808: Waiting
+c6cf28de8a06: Layer already exists
+1654d480f069: Waiting
+1cfae48a7860: Waiting
+73df05f33fe8: Waiting
+5ce41b2d616d: Layer already exists
+1adfa44fad13: Layer already exists
+3f8bc8f6c1c3: Waiting
+2b542796ccab: Waiting
+e34ff6e49252: Layer already exists
+bf2c3e352f3d: Layer already exists
+891494355808: Layer already exists
+1654d480f069: Waiting
+3f8bc8f6c1c3: Waiting
+2b542796ccab: Waiting
+1cfae48a7860: Waiting
+73df05f33fe8: Waiting
+3f8bc8f6c1c3: Waiting
+2b542796ccab: Layer already exists
+1cfae48a7860: Waiting
+73df05f33fe8: Layer already exists
+1654d480f069: Waiting
+3f8bc8f6c1c3: Waiting
+1cfae48a7860: Waiting
+1654d480f069: Layer already exists
+1cfae48a7860: Layer already exists
+3f8bc8f6c1c3: Pushed
+latest: digest: sha256:e4892dbbf13c84dd2b225644f04a770f695cd35bf14db89dabb21b3158f266f9 size: 2671
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Trigger Render Deployment)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $KEY
+[Pipeline] {
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [KEY]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ curl https://api.render.com/deploy/****
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100    10  100    10    0     0     40      0 --:--:-- --:--:-- --:--:--    40
+Not Found
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
